@@ -1,0 +1,17 @@
+Importing
+In Python, each .py file is a module, and we can import functions, variables, and classes from one module into another with the import statement. 
+The name of a module is the filename (without the .py extension).
+
+Game Loop
+Video games are generally built using a game loop. The simplest game loop has 3 steps:
+
+1. Check for player inputs
+2. Update the game world
+3. Draw the game to the screen
+
+To create a good user experience, these 3 steps need to happen many times per second.
+
+
+
+
+
