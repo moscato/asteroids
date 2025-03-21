@@ -49,4 +49,3 @@ You wanna look for (venv) at the start of your prompt.
 
 
 
-
