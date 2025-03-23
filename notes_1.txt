@@ -47,5 +47,8 @@ ending venv just goes:
 
 You wanna look for (venv) at the start of your prompt.
 
-
+Quick reminder*
+git add .
+git commit -m "whatever"
+git push -u origin main
 

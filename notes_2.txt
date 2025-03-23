@@ -45,8 +45,39 @@ class Player(CircleShape):
             self.rotate(dt) # rotate right
 
 
+-=------------=====================================-=-=-=--------------------------------=================
 
+Groups
+Currently, we manually call .update() and .draw() on the player object, 
+which means our game loop is going to get more and more cluttered as we add additional objects to the game. 
+Fortunately, pygame has a solution!
 
+The Group class is a container that holds and manages multiple game objects. 
+We can organize our objects into various groups to track them more easily.
 
+You can think of them as a sort of Venn diagram. 
+An object can be in multiple groups at the same time! 
 
+Creating and Using Groups
+You can create a new empty group like this:
+
+my_group = pygame.sprite.Group()
+
+To add all instances of a Player to two groups, group_a and group_b in this example, 
+we add a class variable (or static field) called containers to the class just like so 
+(with literally this one line, you don't need to bother with adding this field to the class declaration):
+
+Player.containers = (group_a, group_b)
+
+After changing a static field like containers, make sure to create all Player objects after the change. 
+This way, they will be correctly added to the groups.
+
+You can iterate over objects in a group just like any other collection in Python:
+
+for thing in group:
+    thing.do_something(some_value)
+
+You may also call the .update() method for every member of a group by calling it on the group itself:
+
+group.update(dt)
 
