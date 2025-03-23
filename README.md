@@ -2,6 +2,6 @@
 
 This project is still in development.
  <br>
-Feel free to send suggestions I suppose to jmoscato@proton.me
+Feel free to send suggestions to jmoscato@proton.me
  <br>
-Or also job opportunities, we take those too :)
+Or also job opportunities I suppose, we take those too :)
