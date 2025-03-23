@@ -1,26 +1,16 @@
-Importing
-In Python, each .py file is a module, and we can import functions, variables, and classes from one module into another with the import statement. 
-The name of a module is the filename (without the .py extension).
-
-Game Loop
-Video games are generally built using a game loop. The simplest game loop has 3 steps:
-
-1. Check for player inputs
-2. Update the game world
-3. Draw the game to the screen
-
-To create a good user experience, these 3 steps need to happen many times per second.
-
--=------------=====================================-=-=-=--------------------------------=================
-
-
 from circleshape import *
 from constants import *
 
-class Player(CircleShape):
+class Player(CircleShape, pygame.sprite.Sprite):
     def __init__(self, x, y):
-        super().__init__(x, y, PLAYER_RADIUS)
+        # Initialize both parent classes
+        # pygame.sprite.Sprite.__init__(self)  # Initialize pygame.sprite.Sprite
+        super().__init__(x, y, PLAYER_RADIUS)  # Initialize CircleShape
+
         self.rotation = 0
+        
+        # Add the Player to its containers
+        self.add(*self.containers)
 
     def triangle(self):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
@@ -43,6 +33,14 @@ class Player(CircleShape):
             self.rotate(-dt) # rotate left
         if keys[pygame.K_d]:
             self.rotate(dt) # rotate right
+        if keys[pygame.K_w]:
+            self.move(dt) # rotate right
+        if keys[pygame.K_s]:
+            self.move(-dt) # rotate right
+
+    def move(self, dt):
+        forward = pygame.Vector2(0, 1).rotate(self.rotation)
+        self.position += forward * PLAYER_SPEED * dt
 
 
 
