@@ -1,4 +1,5 @@
 import pygame
+import pygame.font
 from constants import *
 from player import *
 from asteroid import *
@@ -9,6 +10,14 @@ def main():
     print("Starting Asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
+    score = 0
+
+    pygame.font.init()
+    font = pygame.font.SysFont("Arial", 30)
+
+    def draw_score(screen, score):
+        score_text = font.render(f"Score: {score}", True, (255, 255, 255))
+        screen.blit(score_text, (10, 10))
 
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
@@ -36,6 +45,8 @@ def main():
         # Get time delta
         dt = clock.tick(60) / 1000
 
+        draw_score(screen, score)
+
         # Update the display
         pygame.display.flip()
 
@@ -60,8 +71,11 @@ def main():
             for shot in shots:
                 if shot.collides_with(asteroid):
                     # print("HIT!")
+                    score += 1
                     asteroid.split() # kill()
                     shot.kill()
+
+
 
 if __name__ == "__main__":
     main()
