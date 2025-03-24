@@ -60,7 +60,7 @@ def main():
             for shot in shots:
                 if shot.collides_with(asteroid):
                     # print("HIT!")
-                    asteroid.kill()
+                    asteroid.split() # kill()
                     shot.kill()
 
 if __name__ == "__main__":
