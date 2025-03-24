@@ -5,6 +5,11 @@ from player import *
 from asteroid import *
 from asteroidfield import *
 import sys
+import subprocess
+
+def open_game_over(score):
+    subprocess.Popen(["python", "game_over.py", str(score)])
+
 
 def main():
     print("Starting Asteroids!")
@@ -64,6 +69,7 @@ def main():
         for obj in drawable:
             if isinstance(obj, Asteroid) and player.collides_with(obj):
                 print("Game over!")
+                open_game_over(score)
                 sys.exit()
         
         # Check for collisions between shot and asteroids
@@ -75,7 +81,7 @@ def main():
                     asteroid.split() # kill()
                     shot.kill()
 
-
+    pygame.quit()
 
 if __name__ == "__main__":
     main()
