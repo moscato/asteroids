@@ -1,4 +1,5 @@
 from circleshape import *
+from constants import SHOT_RADIUS
 
 class Asteroid(CircleShape):
     def __init__(self, x, y, radius):
@@ -13,7 +14,19 @@ class Asteroid(CircleShape):
         self.position += self.velocity * dt
       
 
+class Shot(CircleShape, pygame.sprite.Sprite):
+    def __init__(self, x, y):
+        CircleShape.__init__(self, x, y, SHOT_RADIUS)
+        pygame.sprite.Sprite.__init__(self)
+        self.velocity = pygame.Vector2(0, 0)
+        self.add(*self.containers)
 
+    def draw(self, screen):
+        # Draw the shot as a small white circle
+        pygame.draw.circle(screen, "white", self.position, SHOT_RADIUS)
+    
+    def update(self, dt):
+        self.position += self.velocity * -dt
 
 
 

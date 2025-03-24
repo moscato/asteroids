@@ -1,5 +1,7 @@
 from circleshape import *
 from constants import *
+from asteroid import Shot
+
 
 class Player(CircleShape, pygame.sprite.Sprite):
     def __init__(self, x, y):
@@ -8,9 +10,19 @@ class Player(CircleShape, pygame.sprite.Sprite):
         super().__init__(x, y, PLAYER_RADIUS)  # Initialize CircleShape
 
         self.rotation = 0
+
+        self.shot_cooldown = 0  # Current cooldown time
+        self.shot_delay = 0.3  # Time in seconds between shots
         
         # Add the Player to its containers
         self.add(*self.containers)
+
+    # Sprite groups relevant to player
+    all_sprites = pygame.sprite.Group()  # All game objects
+    shots = pygame.sprite.Group()        # Just the bullets
+
+    # Assign containers for Shot objects
+    Shot.containers = all_sprites, shots
 
     def triangle(self):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
@@ -28,19 +40,33 @@ class Player(CircleShape, pygame.sprite.Sprite):
 
     def update(self, dt):
         keys = pygame.key.get_pressed()
+        if self.shot_cooldown > 0:
+            self.shot_cooldown -= dt
 
-        if keys[pygame.K_a]:
+        if keys[pygame.K_LEFT]:
             self.rotate(-dt) # rotate left
-        if keys[pygame.K_d]:
+        if keys[pygame.K_RIGHT]:
             self.rotate(dt) # rotate right
-        if keys[pygame.K_w]:
-            self.move(dt) # rotate right
-        if keys[pygame.K_s]:
-            self.move(-dt) # rotate right
+        if keys[pygame.K_UP]:
+            self.move(dt) # moves forward
+        if keys[pygame.K_DOWN]:
+            self.move(-dt) # moves down
+        if keys[pygame.K_SPACE] and self.shot_cooldown <= 0:
+            self.shoot()
+            self.shot_cooldown = self.shot_delay
 
     def move(self, dt):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
         self.position += forward * PLAYER_SPEED * dt
+
+    def shoot(self):
+        # Create a Shot at the Player's current position
+        shot = Shot(self.position.x, self.position.y)
+        
+        # Calculate velocity based on player's rotation
+        direction = pygame.Vector2(0, -1).rotate(self.rotation)
+        shot.velocity = direction * PLAYER_SHOOT_SPEED
+        # print('FIRE!')
 
 
 
