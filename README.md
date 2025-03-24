@@ -2,6 +2,8 @@
 
 This project is still in development.
  <br>
-Feel free to send suggestions to jmoscato@proton.me
+<u>To Fix<u/>
  <br>
-Or also job opportunities I suppose, we take those too :)
+Cant close from main.py after re-opening with subprocess
+  <br>
+Stays running in CLI after closing from game_over.py
