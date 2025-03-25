@@ -1,4 +1,4 @@
-# asteroids
+# Asteroids
 
 This project is still in development.
  <br>
