@@ -7,7 +7,7 @@ import os
 
 def get_final_score():
     if len(sys.argv) > 1:
-        return int(sys.argv[1])  # Convert score from argument
+        return int(sys.argv[1])
     return 0
 
 pygame.init()
