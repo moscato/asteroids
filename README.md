@@ -6,7 +6,9 @@ This project is still in development.
  <br>
 ~~Cant close from main.py after re-opening with subprocess~~
   <br>
-  ^^ fixed by changing <i>subprocess.run(["python", "main.py"])<i/> to <i>os.execv(sys.executable, main())<i/>
+^^ fixed by changing <i>subprocess.run(["python", "main.py"])<i/> to <i>os.execv(sys.executable, main())<i/>
+  <br>
+Thanks @Tishues !
   <br>
 Stays running in CLI after closing from game_over.py
 
