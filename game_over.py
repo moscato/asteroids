@@ -30,7 +30,7 @@ score_text = score_font.render(f"Final Score: {score}", True, (255, 255, 255))
 # Button setup
 button_font = pygame.font.SysFont("Arial", 30)
 button_text = button_font.render("Again?", True, (255, 255, 255))
-button_rect = pygame.Rect(SCREEN_WIDTH // 2 - 100, SCREEN_HEIGHT // 2 + 50, 200, 50)
+button_rect = pygame.Rect(SCREEN_WIDTH // 2 - 75, SCREEN_HEIGHT // 2 + 50, 150, 50)
 
 # Main loop
 running = True

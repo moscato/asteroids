@@ -38,6 +38,7 @@ def main():
     asteroid_field = AsteroidField()
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    pygame.display.set_caption("ASTEROIDS!")
     clock = pygame.time.Clock()
 
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
