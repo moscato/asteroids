@@ -79,7 +79,7 @@ def main():
                 if shot.collides_with(asteroid):
                     # print("HIT!")
                     score += 1
-                    asteroid.split() # kill()
+                    asteroid.split()
                     shot.kill()
 
     pygame.quit()
