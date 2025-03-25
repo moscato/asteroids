@@ -1,5 +1,6 @@
 import pygame
 import pygame.font
+from main import main
 import sys
 import subprocess
 import os
@@ -17,7 +18,7 @@ score = get_final_score()
 # Screen setup
 SCREEN_WIDTH, SCREEN_HEIGHT = 800, 600
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Game Over")
+pygame.display.set_caption("¯\_(ツ)_/¯")
 
 # Font setup
 font = pygame.font.SysFont("Arial", 50)
@@ -52,13 +53,10 @@ while running:
             running = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if button_rect.collidepoint(event.pos):
-                subprocess.run(["python", "main.py"])
+                os.execv(sys.executable, main())
+                pygame.quit()
                 sys.exit()
-                os._exit(0)
 
 pygame.quit()
 sys.exit()
 os._exit(0)
-
-
-

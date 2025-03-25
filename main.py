@@ -45,7 +45,8 @@ def main():
     while SCREEN_WIDTH == 1280:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return
+                # return
+                sys.exit()
         
         # Get time delta
         dt = clock.tick(60) / 1000
@@ -82,6 +83,8 @@ def main():
                     shot.kill()
 
     pygame.quit()
+    sys.exit()
+    os._exit(0)
 
 if __name__ == "__main__":
     main()
