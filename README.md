@@ -9,3 +9,6 @@ This project is still in development.
   ^^ fixed by changing <i>subprocess.run(["python", "main.py"])<i/> to <i>os.execv(sys.executable, main())<i/>
   <br>
 Stays running in CLI after closing from game_over.py
+
+![alt text]([http://url/to/img.png](https://github.com/moscato/asteroids/blob/main/asteroids.png))
+
